@@ -1,6 +1,6 @@
 apiVersion: v2
-name: mymysql
-description: A Helm MYMYSQL chart for Kubernetes Advanced User
+name: petclinic
+description: A Helm Petclinic chart for Kubernetes Advanced User
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -21,9 +21,3 @@ version: 0.1.5
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 1.16.0
-
-dependencies:
-- name: petclinic
-  version: "0.1.5"
-  repository: "http://localhost:8080"
-

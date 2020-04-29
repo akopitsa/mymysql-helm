@@ -1,0 +1,6 @@
+dependencies:
+- name: petclinic
+  repository: http://localhost:8080
+  version: 0.1.5
+digest: sha256:969b0157209d59a728ae6721940668eb313740a851209f91e860b01ca3931136
+generated: "2020-04-29T16:53:20.400148374Z"

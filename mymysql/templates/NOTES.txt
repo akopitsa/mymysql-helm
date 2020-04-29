@@ -1,0 +1,6 @@
+My fisrt HELM chart
+
+You can connect to MySQL with
+POD=$(kubectl get pods -n default -l app=mysql -o jsonpath="{.items[0].metadata.name}")
+kubectl exec $POD -it -- mysql -u{{ .Values.dbUser }} -p{{ .Values.dbPassword }}
+

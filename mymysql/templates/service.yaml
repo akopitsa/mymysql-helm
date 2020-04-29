@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-{{ include "myhelm1.name" . }}
 spec:
   ports:
   - port: 3306
