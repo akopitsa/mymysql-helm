@@ -1,18 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
-  labels:
-    app: mysql
+  name: mysql-{{ include "myhelm1.name" . }}
+  {{- template "mychart.labels" }}
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: mysql
+  {{- template "mychart.matchLabels" }}
   template:
     metadata:
-      labels:
-        app: mysql
+      {{- template "mychart.labels" }}
     spec:
       containers:
         - image: mysql:8
