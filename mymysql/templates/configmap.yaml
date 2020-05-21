@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  {{- template "mychart.labels" }}
+  name: dbsecret-{{ include "myhelm1.name" . }}
+data:
+  my-config.cnf: |-
+    {{- .Files.Get "configs/my.cnf" | nindent 4 }}
+

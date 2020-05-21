@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-{{ include "myhelm1.name" . }}
+  {{- template "mychart.labels" }}
+spec:
+  replicas: 1
+  {{- template "mychart.matchLabels" }}
+  template:
+    metadata:
+      {{- template "mychart.labels" }}
+    spec:
+      containers:
+        - image: mysql:8
+          name: mysql
+          args:
+            - "--default-authentication-plugin=mysql_native_password"
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dbsecret-{{ .Release.Name }}
+                  key: password
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name: mysql-config
+              mountPath: /etc/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-volumeclaim
+        - name: mysql-config
+          configMap:
+            name: dbsecret-{{ include "myhelm1.name" . }} 

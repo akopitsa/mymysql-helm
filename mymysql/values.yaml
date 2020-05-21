@@ -1,0 +1,3 @@
+dbPassword: secretpassword
+dbUser: root
+app: mysql
