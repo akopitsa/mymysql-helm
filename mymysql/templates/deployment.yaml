@@ -27,7 +27,12 @@ spec:
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /var/lib/mysql
+            - name: mysql-config
+              mountPath: /etc/mysql
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: mysql-volumeclaim
+        - name: mysql-config
+          configMap:
+            name: dbsecret-{{ include "myhelm1.name" . }} 
